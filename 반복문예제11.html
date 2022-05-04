@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+
+
+    </head>
+
+
+    <body>
+       
+        <script>    //사용자가 입력한 수(n-prompt)들의 갯수(count++)
+                    //와 합을 구하는  작성(sum)을프로그램을 입력받해 봅시다. 단 0으면 입력 종료)
+            var n = -1;
+            var count = -1;
+            var sum = 0;
+            
+            while(n!=0){
+                n = Number(prompt("수를 입력하세요"));
+                sum = sum+n;
+                count++
+                console.log(n,count,sum);
+            }
+
+            document.write(n,count,sum);          
+
+
+        </script>
+
+
+    </body>
+
+</html>

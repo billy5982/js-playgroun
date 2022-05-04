@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+    <script>
+
+let b = prompt("점수를 입력해주세요");
+let a = Number(b);
+if(a>=90)
+{document.write("A+")}
+ else if(90>a && a>=80)  //앞에 있는 90 부분 지워도됨. if는 아래순으로 실행되기 때문.
+ {document.write("A");}
+    else if(80>a && a>=70){
+        document.write("b+");}
+        else if(70>a && a>=60){
+            document.write("b");
+        }
+            else
+            document.write("F");
+
+let fir = true;
+let sec = false;
+if(fir){
+    console.log("1o");
+    if(sec){
+    console.log("2o");
+}else{console.log("02x");
+}
+}else{
+    console.log("1x");}
+        </script>    
+    </body>
+            </html>

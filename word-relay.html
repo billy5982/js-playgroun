@@ -1,0 +1,43 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+    <style>
+
+
+    </style>
+</head>
+
+
+<body>
+  <div><span id="order">1</span>번째 참가자</div>
+  <div>제시어 : <span id = "word"></span></div>
+  <input id = "text1" type="text">
+  <button id = "btn1">입력</button>
+
+  <script> //javascript를 넣는곳
+    const number = parseInt(prompt("몇명이 참가합니까?"),10); //뒤에 10은 10진수라는 것을 알려줌 굳이 안써도 됨.
+    alert(number); //prompt는 입력창 alert는 경고창(출력창)
+    const yesorno = confirm("맞나요?"); //위 alert가 맞는 지 틀린지 확인하는 명령어 틀리면 취소 boolean값 true,false
+    
+    document.querySelector('#text1').addEventListener('input', function(event){//addEventListener input은 입력이 될떄마다 function출력
+      console.log('글자 입력',event.target.value); // 값을 입력될때마다 어떤것을 쓰는지 나오고 지워도 지운것이 표현됨.
+    }); // id는 #아이디으로 사용함.  class는 .클래스  addEventListener는 상호작용
+        // input 태그는 텍스트를 치는 이벤트를 발생시킴. function 이름이 없으면 한번만 쓰는 function
+        // function 이름을 안지어주는 것을 한번만 사용할 함수이기 때문인 것을 구분
+        // function(event)- event는 다른것이여도 상관없음 예) function(ea){console.log('글자입력',ea.target.value)}
+    document.querySelector('#btn1').addEventListener('click', function(){//addEventListener click은 클릭시마다 function 실행
+      console.log('버튼 클릭');
+    });
+
+    /*const oneclick = function(){
+      console.log('버튼 클릭');
+    }
+    document.querySelector('#btn1').addEventListener('click',oneclick);*/ 
+  // 위처럼 함수를 바깥으로 빼서 설정도 가능 함수자리기 때문에 ()안넣고 함수이름만 넣어야됨.
+    
+  </script>
+</body>
+</html>

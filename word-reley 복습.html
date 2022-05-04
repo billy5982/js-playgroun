@@ -1,0 +1,62 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>제시어 : <span id="word"></span></div>
+    <input type="text"><button>입력</button>
+
+    <script>
+        const number = parseInt(prompt("참가자가 몇명인가요?"));
+
+        if(number){
+        const $word = document.querySelector('#word'); // 제시어의 html 함수를 가져오는 것이야.
+        const $order = document.querySelector('#order');
+        const $input = document.querySelector('input'); // html 함수를 가져옴 input
+        const $button = document.querySelector('button'); //html 함수를 가져옴 button
+    
+
+        let word; // 제시어
+        let newword; //입력된 단어.
+
+        const onbuttonClick =function(){
+            if(!word||(word[word.length-1]===newword[0]&&newword.length===3)){ // 제시어가 비어있나요? 첫번쨰 참가자는 틀릴 이유가 없어
+                word = newword; //onInput function event랑 연결되어서 입력단어가 새로운 제시어가 됨. // 화면 출력이 필요함.
+                $word.textContent = word;  //newword가 word가 되었고 word를 html 명령어에 넣어줌
+                $input.value = ''; //input 창을 비워준다.
+                const order = parseInt($order.textContent);
+                if(order + 1>number){
+                    $order.textContent = '1';
+                }else{
+                    $order.textContent = order + 1;
+                }
+
+
+            }
+            else{ //제시어가 있다.(2~3번째 참가자라는 뜻.)(판별이 필요 제시어가 올바른가?)
+               
+                    alert("틀렸습니다.");
+               
+        }
+        $input.value ='';
+                $input.focus();
+    }
+        const onInput = function(event){
+            newword = event.target.value; //값이 입력되는 것이 newword가 됨.
+        }
+
+        $input.addEventListener('input',onInput);// html 함수만 가져오고 실행시에 대한 명령어 onInput이 실행된다.
+        $button.addEventListener('click',onbuttonClick); // html 함수만 가져오면 필요가 업식 때문에 명령어 onbuttonClick이 실행된다.
+    }
+
+        
+
+
+
+    </script>
+</body>
+</html>

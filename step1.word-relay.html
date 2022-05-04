@@ -1,0 +1,78 @@
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>끝말잇기</title>
+  <style>
+
+
+  </style>
+</head>
+
+
+<body>
+  <div><span id="order">1</span>번째 참가자</div>
+  <div>제시어 : <span id="word"></span></div>
+  <input id="text1" type="text">
+  <button id="btn1">입력</button>
+
+  <script> //javascript를 넣는곳
+    const number = Number(prompt('몇명이 참가합니까?')); //순서도 1 참가자의 인원을 파악한다. /순서는 1-2-3 순으로 진행할거기 떄문에 신경쓰지 않아도 된다.
+
+    const $button = document.querySelector('button');  // button의 html 함수를 불러온다.
+    const $input = document.querySelector('input');    // input text 입력창의 함수를 불러온다.
+    const $order = document.querySelector('#order');  //order의 html 함수를 불러와
+    const $word = document.querySelector('#word'); //제시어 입력칸의 span id 함수를 불러온다.
+    
+    let word; //제시어
+    let newword;  //새로운 입력 단어
+
+    const onClickbutton = function() { // 버튼 이벤트 발생되면 함수가 실행됨.
+      if (!word) {  //!word는 word가 아니다. 즉 word가 비어있다. 
+        
+        word = newword; //새롭게 입력된 단어는 제시어가 된다.
+        $word.textContent = word; //newword가 word가 된상태에서 $word(span id)에 등록되는 것
+        $input.value = ''; // 버튼을 눌렀을 떄 새로운 단어가 제시어로 넘어갔기 떄문에 input 내부는 비워줘야됨.
+        const order = parseInt($order.textContent); 
+        if (order + 1 > number) { 
+          $order.textContent = '1'; 
+        } else {
+          $order.textContent = order + 1; 
+        }
+        $input.focus();
+      } else {
+        // 비어있지 않다.
+        if (word[word.length - 1] === newword[0]) {  //검사를 해야지? word의 마지막 글자와 newword 첫번쨰 글자가 같은지?
+          word = newword;  //새로운 단어가 제시어 되는것.
+          $word.textContent = word;  //$input-neword-word $word- span하고 연결되어있어 textcontent를 이용해서 텍스트를 넣어준것
+          $input.value = ''; //인풋창 비워줌.
+          const order = parseInt($order.textContent); //order에 $order텍스트컨텐츠를 숫자로 받아들임.
+          if (order + 1 > number) {  //현재참가자에서 총 참가자가 클시
+            $order.textContent = '1';  // 1로 돌아가($order.textContent를 해준 이유는 1로 바꾸기 위함.)
+          } else {
+            $order.textContent = order + 1; 
+          }
+          $input.focus();
+
+        } else {
+            alert("올바르지 않은 글자입니다.");
+            $input.value = '';
+            $input.focus(); 
+        }
+      }
+    };
+    const onInput = function(event) { //$input이 시작되면 event 함수를 시작한다.
+      newword = event.target.value;  //새로운 단어의 값을 불러온다.
+    };
+
+     $button.addEventListener('click', onClickbutton); // 입력단계 : $button이 불러온 함수에 이벤트를 더해준다. 클릭시 다음 함수가 실행된다. 입력 후 진입.
+     $input.addEventListener('input', onInput); // 대기 단계 : $input이 불러온 함수에 이벤트를 더해주는것. 입력시 onInput 함수가 실행된다.
+
+
+
+  </script>
+</body>
+
+</html>
